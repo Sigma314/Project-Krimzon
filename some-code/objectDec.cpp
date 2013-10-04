@@ -8,6 +8,8 @@ struct playClass            //The playable classes to vary gameplay a bit
     int weapons[];          //what weapons (pulled from the index) do they have
     char * description;     //the description of what the class is and what it's meant to do
     int vclPriority;        //0. can pilot basic vehicles, 1. can pilot a few intermediate vehicles, 2. can pilot everything
+    float movespeed;        //how fast the unit moves
+    int health;             //base (for most classes) is 100
 };
 
 struct faction              //the "teams" so to speak
@@ -35,7 +37,10 @@ struct weapon               //Duh?
     int indexValue;         //Value on the weapon index
     //model v_model;        //for when this won't suck
     //model w_model;        //see above
+    int ammoCount[];        //how much ammo the weapon can contain [magsize, total]
+    int ammmoType;          //so there can be few universal sets of ammo. (Finding a crate with blue, dark, etc)
     int damage;             //How much damage it does
+    float overheatProgress; //how much closer the weapon gets to overheating with every shot fired (0 -> 0.5 -> 1 etc)
     sf::Time fireDelay;     //how long between firing and working
     sf::Time det;           //how long the projectile takes to explode after being launched
     xpl resultBlast;        //the explosion resulting from the weapon (if any)
@@ -44,9 +49,10 @@ struct weapon               //Duh?
 struct player               //what a player is
 {
    char * playerName;       //"Username not taken"
-   int playerFaction        //what team they're on
+   int playerFaction;       //what team they're on
    playClass playerClass;   //what class they are
    float location[];        //where they are [x, y, z]
    float lookdirection[];   //where they're facing [x, y, z]
    int wepEquipped;         //what weapon they have equpped
+   int ammoRemain[];        //How much ammo is left in their current mag/total
 };
