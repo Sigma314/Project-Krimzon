@@ -4,7 +4,10 @@
 #include <assimp/Importer.hpp>      // C++ importer interface
 #include <assimp/scene.h>           // Output data structure
 #include <assimp/postprocess.h>     // Post processing flags
-#include "objectDec.cpp"
+#include "objectDec.h"
+//#include "weaponList.cpp"
+#include "gamemodes.cpp"
+#include "winConditions.h"
 
 int main()
 {
